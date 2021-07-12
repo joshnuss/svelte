@@ -63,7 +63,7 @@
 			const gist = await r.json();
 			dispatch('forked', { gist });
 
-			modified = 0
+			modified = false
 			repl.markSaved()
 
 			if (intentWasSave) {
@@ -120,7 +120,7 @@
 
 			await r.json();
 
-			modified = 0
+			modified = false
 			repl.markSaved()
 			justSaved = true;
 			await wait(600);
@@ -206,7 +206,7 @@ export default app;` });
 				<Icon name="check" />
 			{:else}
 				<Icon name="save" />
-				{#if modified > 0}
+				{#if modified}
 					<div class="badge">{modified}</div>
 				{/if}
 			{/if}
